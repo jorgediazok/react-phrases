@@ -20,6 +20,9 @@ function App() {
     <div className="app">
       <div className="card">
         <h1 className="heading">{phrases}</h1>
+        <button className="button" onClick={fetchPhrase}>
+          <span>Dame un consejo Diego</span>
+        </button>
       </div>
     </div>
   );
