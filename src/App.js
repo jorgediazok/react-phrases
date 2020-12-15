@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import Client from './api';
 import './App.css';
 
 function App() {
-  const [phrases, setPhrases] = useState('');
-
-  const fetchPhrase = async () => {
-    let response = await axios.get('https://api.adviceslip.com/advice');
-    let phrases = response.data.slip.advice;
-    console.log(phrases);
-    setPhrases(phrases);
-  };
+  const [phrases, setPhrases] = useState([]);
 
   useEffect(() => {
-    fetchPhrase();
+    const getData = async () => {
+      try {
+        let response = await Client.getEntries({
+          content_type: 'maradonapp',
+        });
+        const data = await response.items;
+        console.log(data);
+        setPhrases(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getData();
   }, []);
 
   return (
     <div className="app">
       <div className="card">
-        <h1 className="heading">{phrases}</h1>
-        <button className="button" onClick={fetchPhrase}>
+        {phrases.map((phrase) => (
+          <h1 className="heading">{phrase.fields.phrases}</h1>
+        ))}
+        <button className="button" onClick={phrases}>
           <span>Dame un consejo Diego</span>
         </button>
       </div>
