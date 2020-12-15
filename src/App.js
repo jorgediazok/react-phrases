@@ -17,9 +17,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="app">
       <div className="card">
-        <h1>{phrases}</h1>
+        <h1 className="heading">{phrases}</h1>
       </div>
     </div>
   );
