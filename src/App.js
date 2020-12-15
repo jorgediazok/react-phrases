@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="app">
       <div className="card">
-        {phrases}
+        <h1 className="heading">{phrases}</h1>
         <button className="button" onClick={handlePhrases}>
           <span>Dame un consejo Diego</span>
         </button>
