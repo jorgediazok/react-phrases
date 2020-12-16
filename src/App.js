@@ -12,8 +12,8 @@ function App() {
       });
       const data = await response.items;
       let randomNum = Math.floor(Math.random() * data.length);
+      console.log(randomNum);
       let randomPhrase = data[randomNum].fields.phrases;
-      console.log(randomPhrase);
       setPhrases(randomPhrase);
     } catch (err) {
       console.log(err);
@@ -28,8 +28,13 @@ function App() {
     getData();
   };
 
+  const dynamicBackground = () => {
+    let randomNum = Math.floor(Math.random() * phrases.length);
+    console.log(randomNum);
+  };
+
   return (
-    <div className="app">
+    <div className={`app background ${dynamicBackground}`}>
       <div className="card">
         <h1 className="heading">{phrases}</h1>
         <button className="button" onClick={handlePhrases}>
