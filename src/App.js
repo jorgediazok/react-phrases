@@ -28,13 +28,11 @@ function App() {
     getData();
   };
 
-  const dynamicBackground = () => {
-    let randomNum = Math.floor(Math.random() * phrases.length);
-    console.log(randomNum);
-  };
+  const dynamicBackground = 'background-' + Math.ceil(Math.random() * 5);
+  console.log(dynamicBackground);
 
   return (
-    <div className={`app background ${dynamicBackground}`}>
+    <div className={`app ${dynamicBackground}`}>
       <div className="card">
         <h1 className="heading">{phrases}</h1>
         <button className="button" onClick={handlePhrases}>
